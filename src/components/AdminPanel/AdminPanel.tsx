@@ -1,12 +1,13 @@
 import React, {useContext,useState} from 'react';
-import { StoreContext } from '../../store/StoreProvider';
+import { useSettings } from '../../store/StoreProvider';
 import CourseDetails from './subomponents/CourseDetails';
 import CoursePopup from './subomponents/CoursePopup';
 
 
 const AdminPanel = () => {
     const [isOpenPopup, setIsOpenPopup] = useState(false);
-    const { courses } = useContext(StoreContext);
+    
+    const {courses} = useSettings();
 
     const showPopup = () => setIsOpenPopup(true);
 

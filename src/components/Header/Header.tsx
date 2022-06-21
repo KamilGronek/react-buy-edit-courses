@@ -1,16 +1,17 @@
 import React,{useState, useContext} from 'react';
 import bemCssModules from 'bem-css-modules';
 
-import { StoreContext } from '../../store/StoreProvider';
+import { useSettings } from '../../store/StoreProvider';
 
-import { default as HeaderStyles } from './Header.module.scss'
+import { default as HeaderStyles } from './Header.module.scss';
 import LoginForm from '../LoginFrom/LoginForm';
 
 const style = bemCssModules(HeaderStyles)
 
 const Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const {user,setUser} = useContext(StoreContext);
+
+    const {user, setUser} = useSettings();
 
     const handleOnClose = () => {
         setIsModalOpen(false);

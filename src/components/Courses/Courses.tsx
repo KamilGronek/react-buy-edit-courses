@@ -1,14 +1,14 @@
 import React, {useContext} from 'react';
 import bemCssModules from 'bem-css-modules';
 import { default as CoursesStyles } from './Courses.module.scss';
-import { StoreContext } from '../../store/StoreProvider';
+import { useSettings } from '../../store/StoreProvider';
 import Course from '../Course/Course'
 
 const style =  bemCssModules(CoursesStyles);
 
 const Courses = () => {
 
-    const { courses } = useContext(StoreContext);
+    const {courses} = useSettings();
 
     const coursesElements = courses.map(course => <Course key={course.id} {...course}/>)
 

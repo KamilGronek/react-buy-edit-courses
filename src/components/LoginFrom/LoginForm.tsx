@@ -2,7 +2,7 @@ import React,{useState, useContext,useEffect} from 'react';
 import bemCssModules from 'bem-css-modules';
 import Modal from '../Modal/Modal';
 import { default as LoginFormStyles } from './LoginForm.module.scss';
-import { StoreContext } from '../../store/StoreProvider'
+import { useSettings } from '../../store/StoreProvider'
 import request from '../../helpers/request';
 
 const style =  bemCssModules(LoginFormStyles);
@@ -13,7 +13,7 @@ const LoginForm = ({handleOnClose, isModalOpen}) => {
     const [password, setPassword] = useState('');
     const [validateMessage, setValidateMessage] = useState('');
 
-    const { setUser } = useContext(StoreContext);
+    const {setUser} = useSettings();
 
     const handleOnChangeLogin = (e) => {
         setLogin(e.target.value);

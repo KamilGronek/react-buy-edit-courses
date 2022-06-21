@@ -1,7 +1,7 @@
 import React, {useState,useContext} from 'react';
 import bemCssModules from 'bem-css-modules';
 import request from '../../../helpers/request'
-import { StoreContext } from '../../../store/StoreProvider';
+import { useSettings } from '../../../store/StoreProvider';
 import CoursePopup from './CoursePopup';
 
 
@@ -9,7 +9,8 @@ import CoursePopup from './CoursePopup';
 
 const CourseDetails = (props) => {
     const [isOpenPopup, setIsOpenPopup] = useState(false);
-    const { setCourses } = useContext(StoreContext)
+    
+    const {setCourses} = useSettings();
     const { title, id } = props;
 
 

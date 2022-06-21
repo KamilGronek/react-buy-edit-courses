@@ -1,13 +1,14 @@
 import React, {useContext} from 'react';
 import bemCssModules from 'bem-css-modules';
 import { default as UserCoursesStyles } from './UserCourses.module.scss';
-import { StoreContext } from '../../store/StoreProvider';
+import { useSettings } from '../../store/StoreProvider';
 import Course from '../Course/Course'
 
 const style =  bemCssModules(UserCoursesStyles);
 
 const UserStyles = () => {
-    const { user, courses } = useContext(StoreContext)
+
+    const {user, courses} = useSettings();
 
     const buyedCourses = courses
     .filter(course => user.courses.includes(course.id))

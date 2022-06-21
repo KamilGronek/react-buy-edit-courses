@@ -2,14 +2,14 @@ import React, {useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import bemCssModules from 'bem-css-modules';
 import { default as ContentStyles } from './Course.module.scss';
-import { StoreContext } from '../../store/StoreProvider';
+import { useSettings } from '../../store/StoreProvider';
 import request from '../../helpers/request';
 
 const style =  bemCssModules(ContentStyles);
 
 const Course = ({authors, id, img, isUserContext, price, title }) => {
 
-    const { user, setUser } = useContext(StoreContext);
+    const {user, setUser} = useSettings();
 
     const navigate = useNavigate();
 
