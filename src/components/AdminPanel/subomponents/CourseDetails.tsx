@@ -7,7 +7,7 @@ import CoursePopup from './CoursePopup';
 
 
 
-const CourseDetails = (props) => {
+const CourseDetails = (props:any) => {
     const [isOpenPopup, setIsOpenPopup] = useState(false);
     
     const {setCourses} = useSettings();
@@ -16,7 +16,7 @@ const CourseDetails = (props) => {
 
     const showPopup = () => setIsOpenPopup(true);
 
-    const hidePopup = (e) => {
+    const hidePopup = (e:any) => {
         e.preventDefault();
 
         setIsOpenPopup(false)

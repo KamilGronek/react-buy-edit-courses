@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {FC, useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import bemCssModules from 'bem-css-modules';
 import { default as ContentStyles } from './Course.module.scss';
@@ -7,7 +7,16 @@ import request from '../../helpers/request';
 
 const style =  bemCssModules(ContentStyles);
 
-const Course = ({authors, id, img, isUserContext, price, title }) => {
+interface CourseProps {
+    authors: [],
+    id: number
+    img: string,
+    isUserContext: boolean,
+    price: number,
+    title: string
+}
+
+const Course:FC<CourseProps> = ({authors, id, img, isUserContext, price, title }) => {
 
     const {user, setUser} = useSettings();
 

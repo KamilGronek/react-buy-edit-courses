@@ -10,7 +10,7 @@ const Courses = () => {
 
     const {courses} = useSettings();
 
-    const coursesElements = courses.map(course => <Course key={course.id} {...course}/>)
+    const coursesElements = courses.map((course:any) => <Course key={course.id} {...course}/>)
 
  return(
     <section className={style()}>

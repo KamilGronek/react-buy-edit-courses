@@ -1,14 +1,23 @@
-import React, {children, useRef,useEffect} from 'react';
+import React, { useRef,useEffect, FC} from 'react';
 import ReactDOM from 'react-dom';
 import bemCssModules from 'bem-css-modules';
 import { default as ModalStyles } from './Modal.module.scss'
 
 const style = bemCssModules(ModalStyles);
 
-const Modal = ({children, handleOnClose, isOpen, shouldBeCloseOnOutsideClick }) => {
+interface ModalProps {
+    children: any,
+    handleOnClose(): void,
+    isOpen: boolean,
+    shouldBeCloseOnOutsideClick: boolean,
+  }
 
-const modalRef = useRef(null);
-const previousActiveElement = useRef(null);
+
+
+const Modal:FC<ModalProps> = ({children, handleOnClose, isOpen, shouldBeCloseOnOutsideClick }) => {
+
+const modalRef = useRef<any>(null);
+const previousActiveElement = useRef<any>(null);
 
 
 useEffect(()=>{
@@ -18,7 +27,7 @@ useEffect(()=>{
 
     const {current: modal} = modalRef;
 
-    // const current = modalRef.current;
+    // const current = modalRef.modal;
 
     if(isOpen){
         previousActiveElement.current = document.activeElement
@@ -32,7 +41,7 @@ useEffect(()=>{
 useEffect(()=>{
     const { current: modal } = modalRef;
 
-    const handleCancel = (e) =>{
+    const handleCancel = (e:any) =>{
         e.preventDefault();
         handleOnClose();
     };
@@ -45,7 +54,7 @@ useEffect(()=>{
 },[handleOnClose]);
 
 
-const handleOutsideClick = ({target}) => {
+const handleOutsideClick = ({target}:any) => {
     const { current } = modalRef;
 
     if(shouldBeCloseOnOutsideClick && target === current){

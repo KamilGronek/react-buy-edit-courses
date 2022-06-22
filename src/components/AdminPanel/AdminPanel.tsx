@@ -1,7 +1,9 @@
-import React, {useContext,useState} from 'react';
+import React, { useContext,useState} from 'react';
 import { useSettings } from '../../store/StoreProvider';
 import CourseDetails from './subomponents/CourseDetails';
 import CoursePopup from './subomponents/CoursePopup';
+
+
 
 
 const AdminPanel = () => {
@@ -11,21 +13,25 @@ const AdminPanel = () => {
 
     const showPopup = () => setIsOpenPopup(true);
 
-    const hidePopup = (e) => {
+    const hidePopup = (e:any) => {
         if(e){
           e.preventDefault();
         }
         setIsOpenPopup(false)
     };
 
-    const coursesElements = courses.map(course => <CourseDetails key={course.id} {...course} />);
+    const coursesElements = courses.map((course:any) => <CourseDetails key={course.id} {...course} />);
 
 
  return(
     <section>
      {coursesElements}
      <button onClick={showPopup}>Dodaj nowy kurs</button>
-     <CoursePopup isEditMode={false} isOpenPopup={isOpenPopup} hidePopup={hidePopup} />
+     <CoursePopup 
+     isEditMode={false} 
+     isOpenPopup={isOpenPopup} 
+     hidePopup={hidePopup}
+        />
     </section>
  );
 };

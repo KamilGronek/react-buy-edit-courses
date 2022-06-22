@@ -16,7 +16,7 @@ export const StoreProvider:FC = ({children}:any) => {
 
 const useProviderSettings = () =>{
     const [courses, setCourses] = useState([]);
-    const [user, setUser] = useState<any>(null);
+    const [user, setUser] = useState(null);
 
     const fetchData = async () => {
         const {data} = await request.get('/courses');
@@ -41,7 +41,7 @@ const useProviderSettings = () =>{
 
 type SettingsContextData = ReturnType<typeof useProviderSettings>;
 
-export const useSettings = () =>{
+export const useSettings = () => {
     const settings = useContext(StoreContext);
 
     if(!settings){
